@@ -16,10 +16,14 @@ generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var correctPrompts = getPrompts();
 
-  passwordText.value = password;
+  if (correctPrompts) {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+  
+    passwordText.value = password;
+  }
 
 }
 
@@ -29,7 +33,7 @@ function generatePassword() {
 
 function getPrompts() {
   choiceArray = [];
-  
+
   characterLength = parseInt(prompt("How many characters would you like your password to be? Choose between 8 to 128 characters."));
 
   if (isNaN(characterLength) || characterLength < 8 || characterLength > 128) {
