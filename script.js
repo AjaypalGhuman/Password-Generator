@@ -19,16 +19,22 @@ function writePassword() {
   var correctPrompts = getPrompts();
 
   if (correctPrompts) {
-    var password = generatePassword();
+    var newPassword = generatePassword();
     var passwordText = document.querySelector("#password");
   
-    passwordText.value = password;
+    passwordText.value = newPassword;
   }
 
 }
 
+// Random password is generated according to the selected prompts.
 function generatePassword() {
-
+  var password = "";
+  for(var i = 0; i < characterLength; i++) {
+    var randomIndex = Math.floor(Math.random() * choiceArray.length);
+    password = password + choiceArray[randomIndex];
+  }
+  return password;
 }
 
 function getPrompts() {
