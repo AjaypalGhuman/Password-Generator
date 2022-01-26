@@ -10,21 +10,6 @@ var specialCharactersArray = ['@', '%', '+', '/', '!', '#', '$', '^', '?', ':', 
 var generateBtn = document.querySelector("#generate");
 
 
-function choosePasswordLength() {
-  var promptLength = window.prompt("Choose a password length between 8 to 128 characters.");
-  
-  if ((promptLength > 128) || (promptLength < 8)) {
-    window.alert("Password must be AT LEAST 8 characters and no more than 128 characters!");
-    return choosePasswordLength();
-  } else {
-    window.alert("Choose whether or not you would like to include lowercase letters in your password.");
-    return promptLength;
-  }
-}
-function chooseLowercase(){
-  var promptLowercase = window.prompt("Do you wish to include lowercase letters in your password?");
-}  
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
@@ -37,4 +22,15 @@ function writePassword() {
 
 }
 
-function generatePassword() {}
+function generatePassword() {
+
+}
+
+function getPrompts() {
+  characterLength = parseInt(prompt("How many characters would you like your password to be? Choose between 8 to 128 characters."));
+
+  if(isNaN(characterLength) || characterLength < 8 || characterLength > 128) {
+    alert("Character length must be between 8 to 128 characters. Please put a valid response.");
+    return false;
+  }
+}
